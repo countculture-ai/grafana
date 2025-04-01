@@ -1313,7 +1313,7 @@
           "new-recording-rule": "New recording rule",
           "title": "Grafana-managed"
         },
-        "loading-rules_one": "Loading rules from {{count}} source",
+        "loading-rules_one": "Loading rules from {{count}} sources",
         "loading-rules_other": "Loading rules from {{count}} sources"
       }
     },
@@ -1950,7 +1950,7 @@
       "recording-rule": "Recording rule"
     },
     "rule-stats": {
-      "error_one": "{{count}} error",
+      "error_one": "{{count}} errors",
       "error_other": "{{count}} errors",
       "firing": "{{alertingStats}} firing",
       "inactive": "{{normalStats}} normal",
@@ -5628,6 +5628,10 @@
     "log-labels": {
       "collapse": "Collapse labels",
       "expand": "Expand labels"
+    },
+    "log-line": {
+      "show-less": "show less",
+      "show-more": "show more"
     },
     "log-line-menu": {
       "copy-link": "Copy link to log line",

@@ -505,6 +505,7 @@ cloud.google.com/go/workflows v1.13.1 h1:DkxrZ4HyXvjQLZWsYAUOV1w7d2a43XscM9dmkIG
 cloud.google.com/go/workflows v1.13.1/go.mod h1:xNdYtD6Sjoug+khNCAtBMK/rdh8qkjyL6aBas2XlkNc=
 cloud.google.com/go/workflows v1.13.3 h1:lNFDMranJymDEB7cTI7DI9czbc1WU0RWY9KCEv9zuDY=
 cloud.google.com/go/workflows v1.13.3/go.mod h1:Xi7wggEt/ljoEcyk+CB/Oa1AHBCk0T1f5UH/exBB5CE=
+connectrpc.com/connect v1.18.1 h1:PAg7CjSAGvscaf6YZKUefjoih5Z/qYkyaTrBW8xvYPw=
 contrib.go.opencensus.io/exporter/aws v0.0.0-20230502192102-15967c811cec h1:CSNP8nIEQt4sZEo2sGUiWSmVJ9c5QdyIQvwzZAsn+8Y=
 contrib.go.opencensus.io/exporter/aws v0.0.0-20230502192102-15967c811cec/go.mod h1:uu1P0UCM/6RbsMrgPa98ll8ZcHM858i/AD06a9aLRCA=
 contrib.go.opencensus.io/exporter/ocagent v0.6.0 h1:Z1n6UAyr0QwM284yUuh5Zd8JlvxUGAhFZcgMJkMPrGM=

@@ -942,4 +942,8 @@ const (
 	// FlagPluginsAutoUpdate
 	// Enables auto-updating of users installed plugins
 	FlagPluginsAutoUpdate = "pluginsAutoUpdate"
+
+	// FlagAlertRuleUseFiredAtForStartsAt
+	// Use firedAt for startsAt in alert rules
+	FlagAlertRuleUseFiredAtForStartsAt = "alertRuleUseFiredAtForStartsAt"
 )

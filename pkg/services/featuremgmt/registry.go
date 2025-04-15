@@ -1783,6 +1783,13 @@ var (
 			FrontendOnly: false,
 			Owner:        grafanaPluginsPlatformSquad,
 		},
+		{
+			Name:        "alertRuleUseFiredAtForStartsAt",
+			Description: "Use FiredAt for StartsAt when sending alerts to Alertmaanger",
+			Stage:       FeatureStageExperimental,
+			Owner:       grafanaAlertingSquad,
+			Expression:  "false",
+		},
 	}
 )
 

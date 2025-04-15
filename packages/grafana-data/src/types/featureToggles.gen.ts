@@ -1036,4 +1036,9 @@ export interface FeatureToggles {
   * Enables auto-updating of users installed plugins
   */
   pluginsAutoUpdate?: boolean;
+  /**
+  * Use FiredAt for StartsAt when sending alerts to Alertmaanger
+  * @default false
+  */
+  alertRuleUseFiredAtForStartsAt?: boolean;
 }

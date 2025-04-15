@@ -1586,8 +1586,10 @@
     },
     "query-and-expressions-step": {
       "add-query": "Add query",
+      "create-query-or-expression": "Create at least one query or expression to be alerted on",
       "expressions": "Expressions",
       "manipulate-returned-queries-other-operations": "Manipulate data returned from queries with math and other operations.",
+      "no-compatible-sources": "You appear to have no compatible data sources",
       "title-deactivate-advanced-options": "Deactivate advanced options",
       "title-queries-expressions-configured": "No queries or expressions have been configured"
     },
@@ -2018,7 +2020,15 @@
       "alertCondition": "Alert condition"
     },
     "smart-alert-type-detector": {
+      "based-on-selected-data-sources": "Based on the selected data sources this alert rule will be Grafana-managed.",
+      "cannot-change-existing-rule": "The alert rule type cannot be changed for an existing rule.",
+      "data-source-managed": "Data source-managed",
+      "data-source-supports-alert-rule-management": "The data source selected in your query supports alert rule management. Switch to data source-managed if you want the alert rule to be managed by the data source instead of Grafana.",
       "data-sourcemanaged-alert-rules": "Data source-managed alert rules",
+      "dma-description": "Data source-managed alert rules can be used for Grafana Mimir or Grafana Loki data sources which have been configured to support rule creation. The use of expressions or multiple queries is not supported.",
+      "gma-description": "Grafana-managed alert rules allow you to create alerts that can act on data from any of our supported data sources, including having multiple data sources in the same rule. You can also add expressions to transform your data and set alert conditions. Using images in alert notifications is also supported.",
+      "grafana-managed": "Grafana-managed",
+      "grafana-managed-features": "Switch to Grafana-managed to use expressions, multiple queries, images in notifications and various other features.",
       "grafanamanaged-alert-rules": "Grafana-managed alert rules",
       "rule-type": "Rule type",
       "select-where-alert-managed": "Select where the alert rule will be managed.",
@@ -2124,6 +2134,9 @@
         "summary": "The following alert rules will be imported:",
         "title-warning": "Warning"
       }
+    },
+    "type-selector-button": {
+      "add-expression": "Add expression"
     },
     "unknown-rule-list-item": {
       "title-unknown-rule-type": "Unknown rule type"

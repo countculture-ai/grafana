@@ -8,6 +8,7 @@ import (
 	"github.com/grafana/grafana/pkg/registry/apis/featuretoggle"
 	"github.com/grafana/grafana/pkg/registry/apis/folders"
 	"github.com/grafana/grafana/pkg/registry/apis/iam"
+	"github.com/grafana/grafana/pkg/registry/apis/plugin"
 	"github.com/grafana/grafana/pkg/registry/apis/provisioning"
 	"github.com/grafana/grafana/pkg/registry/apis/query"
 	"github.com/grafana/grafana/pkg/registry/apis/secret"
@@ -30,6 +31,7 @@ func ProvideRegistryServiceSink(
 	_ *userstorage.UserStorageAPIBuilder,
 	_ *secret.SecretAPIBuilder,
 	_ *provisioning.APIBuilder,
+	_ *plugin.APIBuilder,
 ) *Service {
 	return &Service{}
 }

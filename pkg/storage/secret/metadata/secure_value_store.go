@@ -63,6 +63,7 @@ type secureValueMetadataStorage struct {
 	keepers               map[contracts.KeeperType]contracts.Keeper
 }
 
+// TODO LND Implement this
 func (s *secureValueMetadataStorage) Create(ctx context.Context, sv *secretv0alpha1.SecureValue) (*secretv0alpha1.SecureValue, error) {
 	authInfo, ok := claims.AuthInfoFrom(ctx)
 	if !ok {
@@ -171,6 +172,7 @@ func (s *secureValueMetadataStorage) Read(ctx context.Context, namespace xkube.N
 	return secureValueKub, nil
 }
 
+// TODO LND Implement this
 func (s *secureValueMetadataStorage) Update(ctx context.Context, newSecureValue *secretv0alpha1.SecureValue) (*secretv0alpha1.SecureValue, error) {
 	authInfo, ok := claims.AuthInfoFrom(ctx)
 	if !ok {
@@ -250,6 +252,7 @@ func (s *secureValueMetadataStorage) Update(ctx context.Context, newSecureValue 
 	return secureValue, nil
 }
 
+// TODO LND Implement this
 func (s *secureValueMetadataStorage) Delete(ctx context.Context, namespace xkube.Namespace, name string) error {
 	_, ok := claims.AuthInfoFrom(ctx)
 	if !ok {
@@ -366,6 +369,7 @@ func (s *secureValueMetadataStorage) List(ctx context.Context, namespace xkube.N
 	}, nil
 }
 
+// TODO LND Implement this
 func (s *secureValueMetadataStorage) SetExternalID(ctx context.Context, namespace xkube.Namespace, name string, externalID contracts.ExternalID) error {
 	return s.db.InTransaction(ctx, func(ctx context.Context) error {
 		return s.db.WithDbSession(ctx, func(sess *sqlstore.DBSession) error {
@@ -387,6 +391,7 @@ func (s *secureValueMetadataStorage) SetExternalID(ctx context.Context, namespac
 	})
 }
 
+// TODO LND Implement this
 func (s *secureValueMetadataStorage) SetStatusSucceeded(ctx context.Context, namespace xkube.Namespace, name string) error {
 	return s.db.InTransaction(ctx, func(ctx context.Context) error {
 		return s.db.WithDbSession(ctx, func(sess *sqlstore.DBSession) error {

@@ -89,7 +89,7 @@ func TestIntegrationDecrypt(t *testing.T) {
 		sv.Name = "sv-test"
 		sv.Namespace = "default"
 
-		createSecureValue(authCtx, t, secureValueMetadataStorage, sv)
+		newSecureValue(authCtx, t, secureValueMetadataStorage, sv)
 
 		exposed, err := decryptSvc.Decrypt(authCtx, "default", "sv-test")
 		require.ErrorIs(t, err, contracts.ErrDecryptNotAuthorized)
@@ -122,7 +122,7 @@ func TestIntegrationDecrypt(t *testing.T) {
 		sv.Name = "sv-test"
 		sv.Namespace = "default"
 
-		createSecureValue(authCtx, t, secureValueMetadataStorage, sv)
+		newSecureValue(authCtx, t, secureValueMetadataStorage, sv)
 
 		exposed, err := decryptSvc.Decrypt(authCtx, "default", "sv-test")
 		require.NoError(t, err)
@@ -153,7 +153,7 @@ func TestIntegrationDecrypt(t *testing.T) {
 		sv.Name = "sv-test"
 		sv.Namespace = "default"
 
-		createSecureValue(authCtx, t, secureValueMetadataStorage, sv)
+		newSecureValue(authCtx, t, secureValueMetadataStorage, sv)
 
 		exposed, err := decryptSvc.Decrypt(authCtx, "default", "sv-test")
 		require.ErrorIs(t, err, contracts.ErrDecryptNotAuthorized)
@@ -183,7 +183,7 @@ func TestIntegrationDecrypt(t *testing.T) {
 		sv.Name = "sv-test"
 		sv.Namespace = "default"
 
-		createSecureValue(authCtx, t, secureValueMetadataStorage, sv)
+		newSecureValue(authCtx, t, secureValueMetadataStorage, sv)
 
 		exposed, err := decryptSvc.Decrypt(authCtx, "default", "sv-test")
 		require.ErrorIs(t, err, contracts.ErrDecryptNotAuthorized)
@@ -213,7 +213,7 @@ func TestIntegrationDecrypt(t *testing.T) {
 		sv.Name = "sv-test"
 		sv.Namespace = "default"
 
-		createSecureValue(authCtx, t, secureValueMetadataStorage, sv)
+		newSecureValue(authCtx, t, secureValueMetadataStorage, sv)
 
 		exposed, err := decryptSvc.Decrypt(authCtx, "default", "sv-test")
 		require.ErrorIs(t, err, contracts.ErrDecryptNotAuthorized)
@@ -243,7 +243,7 @@ func TestIntegrationDecrypt(t *testing.T) {
 		sv.Name = "sv-test"
 		sv.Namespace = "default"
 
-		createSecureValue(authCtx, t, secureValueMetadataStorage, sv)
+		newSecureValue(authCtx, t, secureValueMetadataStorage, sv)
 
 		exposed, err := decryptSvc.Decrypt(authCtx, "default", "sv-test")
 		require.Error(t, err)
@@ -336,7 +336,7 @@ func createAuthContext(ctx context.Context, namespace string, permissions []stri
 }
 
 // This helper will also delete the secureValue from the db when the test is done.
-func createSecureValue(ctx context.Context, t *testing.T, db contracts.SecureValueMetadataStorage, sv *secretv0alpha1.SecureValue) {
+func newSecureValue(ctx context.Context, t *testing.T, db contracts.SecureValueMetadataStorage, sv *secretv0alpha1.SecureValue) {
 	t.Helper()
 
 	_, err := db.Create(ctx, sv)

@@ -5,8 +5,7 @@ import { K8sAnnotations, PROVENANCE_NONE } from 'app/features/alerting/unified/u
 /**
  * Should we call the kubernetes-style API for managing alertmanager entities?
  *
- * Requires the alertmanager referenced being the Grafana AM,
- * and the `alertingApiServer` feature toggle being enabled
+ * Requires the alertmanager referenced being the Grafana AM
  */
 export const shouldUseK8sApi = (alertmanager?: string) => {
   return alertmanager === GRAFANA_RULES_SOURCE_NAME;

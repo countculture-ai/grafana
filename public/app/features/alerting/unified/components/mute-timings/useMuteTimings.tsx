@@ -99,9 +99,7 @@ const useGrafanaAlertmanagerIntervals = () =>
 /**
  * Depending on alertmanager source, fetches mute timings.
  *
- * If the alertmanager source is Grafana, and `alertingApiServer` feature toggle is enabled,
- * fetches time intervals from k8s API.
- *
+ * If the alertmanager source is Grafana, fetches time intervals from k8s API.
  * Otherwise, fetches and parses from the alertmanager config API
  */
 export const useMuteTimings = ({ alertmanager, skip }: BaseAlertmanagerArgs & Skippable) => {
@@ -129,9 +127,7 @@ type CreateUpdateMuteTimingArgs = { interval: MuteTimeInterval };
 /**
  * Create a new mute timing.
  *
- * If the alertmanager source is Grafana, and `alertingApiServer` feature toggle is enabled,
- * fetches time intervals from k8s API.
- *
+ * If the alertmanager source is Grafana, fetches time intervals from k8s API.
  * Otherwise, creates the new timing in `time_intervals` via AM config API
  */
 export const useCreateMuteTiming = ({ alertmanager }: BaseAlertmanagerArgs) => {
@@ -217,9 +213,7 @@ export const useGetMuteTiming = ({ alertmanager, name: nameToFind }: BaseAlertma
 /**
  * Updates an existing mute timing.
  *
- * If the alertmanager source is Grafana, and `alertingApiServer` feature toggle is enabled,
- * uses the k8s API. At the time of writing, the name of the timing cannot be changed via this API
- *
+ * If the alertmanager source is Grafana, uses the k8s API.
  * Otherwise, updates the timing via AM config API, and also ensures any referenced routes are updated
  */
 export const useUpdateMuteTiming = ({ alertmanager }: BaseAlertmanagerArgs) => {

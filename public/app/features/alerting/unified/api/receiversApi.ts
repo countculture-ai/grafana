@@ -1,4 +1,4 @@
-/** @deprecated To be deleted - use alertingApiServer API instead */
+/** @deprecated To be deleted - use k8s API instead */
 
 import { ContactPointsState } from 'app/types';
 

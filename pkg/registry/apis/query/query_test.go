@@ -22,7 +22,7 @@ import (
 
 func TestQueryRestConnectHandler(t *testing.T) {
 	b := &QueryAPIBuilder{
-		client: mockClient{
+		clientSupplier: mockClient{
 			lastCalledWithHeaders: &map[string]string{},
 		},
 		tracer: tracing.InitializeTracerForTest(),
@@ -78,7 +78,7 @@ func TestQueryRestConnectHandler(t *testing.T) {
 		"X-Rule-Type":              "type-1",
 		"X-Rule-Version":           "version-1",
 		"X-Grafana-Org-Id":         "1",
-	}, *b.client.(mockClient).lastCalledWithHeaders)
+	}, *b.clientSupplier.(mockClient).lastCalledWithHeaders)
 }
 
 type mockResponder struct {

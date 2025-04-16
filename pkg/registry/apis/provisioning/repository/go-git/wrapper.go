@@ -21,6 +21,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/util/validation/field"
 
+	"github.com/grafana/grafana-plugin-sdk-go/backend/httpclient"
 	provisioning "github.com/grafana/grafana/pkg/apis/provisioning/v0alpha1"
 	"github.com/grafana/grafana/pkg/registry/apis/provisioning/repository"
 	"github.com/grafana/grafana/pkg/registry/apis/provisioning/safepath"
@@ -35,7 +36,7 @@ const (
 
 func init() {
 	// Create a size-limited writer that will cancel the context if size is exceeded
-	limitedTransport := NewByteLimitedTransport(http.DefaultTransport, maxOperationBytes)
+	limitedTransport := NewByteLimitedTransport(httpclient.NewHTTPTransport(), maxOperationBytes)
 	httpClient := githttp.NewClient(&http.Client{
 		Transport: limitedTransport,
 	})

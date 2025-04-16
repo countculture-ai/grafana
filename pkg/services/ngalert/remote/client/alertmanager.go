@@ -8,6 +8,7 @@ import (
 	"time"
 
 	httptransport "github.com/go-openapi/runtime/client"
+	"github.com/grafana/grafana-plugin-sdk-go/backend/httpclient"
 	"github.com/grafana/grafana/pkg/infra/log"
 	"github.com/grafana/grafana/pkg/infra/tracing"
 	"github.com/grafana/grafana/pkg/services/ngalert/client"
@@ -37,7 +38,7 @@ func NewAlertmanager(cfg *AlertmanagerConfig, metrics *metrics.RemoteAlertmanage
 	c := &http.Client{Transport: &MimirAuthRoundTripper{
 		TenantID: cfg.TenantID,
 		Password: cfg.Password,
-		Next:     http.DefaultTransport,
+		Next:     httpclient.NewHTTPTransport(),
 	}}
 
 	tc := client.NewTimedClient(c, metrics.RequestLatency)

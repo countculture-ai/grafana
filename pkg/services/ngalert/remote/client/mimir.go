@@ -14,6 +14,7 @@ import (
 
 	alertingNotify "github.com/grafana/alerting/notify"
 
+	"github.com/grafana/grafana-plugin-sdk-go/backend/httpclient"
 	"github.com/grafana/grafana/pkg/infra/log"
 	"github.com/grafana/grafana/pkg/infra/tracing"
 	apimodels "github.com/grafana/grafana/pkg/services/ngalert/api/tooling/definitions"
@@ -86,7 +87,7 @@ func New(cfg *Config, metrics *metrics.RemoteAlertmanager, tracer tracing.Tracer
 	rt := &MimirAuthRoundTripper{
 		TenantID: cfg.TenantID,
 		Password: cfg.Password,
-		Next:     http.DefaultTransport,
+		Next:     httpclient.NewHTTPTransport(),
 	}
 
 	c := &http.Client{

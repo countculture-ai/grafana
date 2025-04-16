@@ -20,6 +20,7 @@ import (
 	"time"
 
 	"github.com/Azure/azure-storage-blob-go/azblob"
+	"github.com/grafana/grafana-plugin-sdk-go/backend/httpclient"
 	"github.com/grafana/grafana/pkg/infra/log"
 	"github.com/grafana/grafana/pkg/util"
 )
@@ -175,7 +176,7 @@ func (c *StorageClient) transport() http.RoundTripper {
 	if c.Transport != nil {
 		return c.Transport
 	}
-	return http.DefaultTransport
+	return httpclient.NewHTTPTransport()
 }
 
 func NewStorageClient(account, accessKey string) *StorageClient {

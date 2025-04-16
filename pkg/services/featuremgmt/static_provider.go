@@ -8,10 +8,10 @@ import (
 	"github.com/open-feature/go-sdk/openfeature/memprovider"
 )
 
-func newStaticProvider(cfg *setting.Cfg) (openfeature.FeatureProvider, error) {
+func newStaticProvider(cfg *setting.Cfg) (openfeature.FeatureProvider, map[string]memprovider.InMemoryFlag, error) {
 	confFlags, err := setting.ReadFeatureTogglesFromInitFile(cfg.Raw.Section("feature_toggles"))
 	if err != nil {
-		return nil, fmt.Errorf("failed to read feature toggles from config: %w", err)
+		return nil, nil, fmt.Errorf("failed to read feature toggles from config: %w", err)
 	}
 
 	flags := make(map[string]memprovider.InMemoryFlag, len(standardFeatureFlags))
@@ -29,7 +29,7 @@ func newStaticProvider(cfg *setting.Cfg) (openfeature.FeatureProvider, error) {
 		}
 	}
 
-	return memprovider.NewInMemoryProvider(flags), nil
+	return memprovider.NewInMemoryProvider(flags), flags, nil
 }
 
 func createInMemoryFlag(name string, enabled bool) memprovider.InMemoryFlag {

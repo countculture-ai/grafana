@@ -19,7 +19,7 @@ func TestProvideOpenFeatureManager(t *testing.T) {
 	}{
 		{
 			name:             "static provider",
-			expectedProvider: staticProviderType,
+			expectedProvider: StaticProviderType,
 		},
 		{
 			name: "goff provider",
@@ -29,7 +29,7 @@ provider = goff
 url = http://localhost:1031
 targetingKey = grafana
 `,
-			expectedProvider: goffProviderType,
+			expectedProvider: GOFFProviderType,
 		},
 		{
 			name: "invalid provider",
@@ -37,7 +37,7 @@ targetingKey = grafana
 [feature_toggles.openfeature]
 provider = some_provider
 `,
-			expectedProvider: staticProviderType,
+			expectedProvider: StaticProviderType,
 		},
 	}
 
@@ -52,7 +52,7 @@ provider = some_provider
 			p, err := ProvideOpenFeatureService(cfg)
 			require.NoError(t, err)
 
-			if tc.expectedProvider == goffProviderType {
+			if tc.expectedProvider == GOFFProviderType {
 				_, ok := p.provider.(*gofeatureflag.Provider)
 				assert.True(t, ok, "expected provider to be of type goff.Provider")
 			} else {

@@ -39,7 +39,6 @@ export const MegaMenu = memo(
     const [patchPreferences] = usePatchUserPreferencesMutation();
     const pinnedItems = usePinnedItems();
 
-    console.log(navTree);
     // [count-culture] remove some menus
     const menuOk = (item: NavModelItem) => {
       if (contextSrv.isEditor || contextSrv.isGrafanaAdmin) {

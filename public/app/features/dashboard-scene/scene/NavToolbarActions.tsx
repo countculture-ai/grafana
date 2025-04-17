@@ -313,7 +313,8 @@ export function ToolbarActions({ dashboard }: Props) {
     ),
   });
 
-  const showShareButton = uid && !isEditing && !meta.isSnapshot && !isPlaying;
+  // [count-culture] only admin
+  const showShareButton = uid && !isEditing && !meta.isSnapshot && !isPlaying && (contextSrv.isEditor || contextSrv.isGrafanaAdmin);
   toolbarActions.push({
     group: 'main-buttons',
     condition: !config.featureToggles.newDashboardSharingComponent && showShareButton,

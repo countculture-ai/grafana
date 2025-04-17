@@ -12,6 +12,7 @@ import {
 } from '@grafana/scenes';
 import { Alert, Drawer, Tab, TabsBar } from '@grafana/ui';
 import { t, Trans } from 'app/core/internationalization';
+import { contextSrv } from 'app/core/services/context_srv';
 import { getDataSourceWithInspector } from 'app/features/dashboard/components/Inspector/hooks';
 import { supportsDataQuery } from 'app/features/dashboard/components/PanelEditor/utils';
 import { InspectTab } from 'app/features/inspector/types';
@@ -79,6 +80,14 @@ export class PanelInspectDrawer extends SceneObjectBase<PanelInspectDrawerState>
       }
 
       tabs.push(new InspectJsonTab({ panelRef, onClose: this.onClose }));
+
+      if (!contextSrv.isEditor && !contextSrv.isGrafanaAdmin) {
+        // [count-culture] remove all but inspect data
+        tabs.length = 0
+        tabs.push(new InspectDataTab({ panelRef }));
+      }
+
+
     }
 
     this.setState({ tabs });

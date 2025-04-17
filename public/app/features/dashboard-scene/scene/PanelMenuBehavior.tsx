@@ -83,6 +83,17 @@ export function panelMenuBehavior(menu: VizPanelMenu) {
       return;
     }
 
+    // [count-culture] Add quick link to download CSV
+    items.push({
+      text: t('dashboard.inspect-data.download-csv', `Download CSV`),
+      href: getInspectUrl(panel, InspectTab.Data),
+      iconClassName: 'share-alt',
+      onClick: (e) => {
+        e.preventDefault();
+        locationService.partial({ inspect: panel.state.key, inspectTab: InspectTab.Data });
+      },
+    });
+
     const isEditingPanel = Boolean(dashboard.state.editPanel);
     if (!isEditingPanel) {
       items.push({
@@ -91,6 +102,12 @@ export function panelMenuBehavior(menu: VizPanelMenu) {
         shortcut: 'v',
         href: getViewPanelUrl(panel),
       });
+    }
+
+    // [count-culture] Unless editor or admin we done.
+    if (!contextSrv.isEditor && !contextSrv.isGrafanaAdmin) {
+      menu.setState({ items });
+      return;
     }
 
     if (dashboard.canEditDashboard() && dashboard.state.editable && !isReadOnlyRepeat && !isEditingPanel) {

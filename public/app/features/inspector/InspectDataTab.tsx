@@ -61,7 +61,7 @@ export class InspectDataTab extends PureComponent<Props, State> {
       transformId: DataTransformerID.noop,
       transformationOptions: buildTransformationOptions(),
       transformedData: props.data ?? [],
-      downloadForExcel: false,
+      downloadForExcel: true, // [count-culture]
     };
   }
 

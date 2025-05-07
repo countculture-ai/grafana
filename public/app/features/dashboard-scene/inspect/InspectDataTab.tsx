@@ -25,7 +25,7 @@ export class InspectDataTab extends SceneObjectBase<InspectDataTabState> {
     super({
       ...state,
       options: {
-        withTransforms: false,
+        withTransforms: true, // [count-culture]
         withFieldConfig: true,
       },
     });

@@ -10,6 +10,7 @@ import { ScrollContainer, useStyles2 } from '@grafana/ui';
 import { useGrafana } from 'app/core/context/GrafanaContext';
 import { t } from 'app/core/internationalization';
 import { setBookmark } from 'app/core/reducers/navBarTree';
+import { contextSrv } from 'app/core/services/context_srv';
 import { usePatchUserPreferencesMutation } from 'app/features/preferences/api/index';
 import { useDispatch, useSelector } from 'app/types';
 
@@ -38,9 +39,20 @@ export const MegaMenu = memo(
     const [patchPreferences] = usePatchUserPreferencesMutation();
     const pinnedItems = usePinnedItems();
 
+    // [count-culture] remove some menus
+    const menuOk = (item: NavModelItem) => {
+      if (contextSrv.isEditor || contextSrv.isGrafanaAdmin) {
+        return true;
+      } else if (item.id === 'alerting' || item.id === 'dashboards' || item.id === 'bookmarks' || item.id === 'cfg') {
+        return false;
+      }
+      return true;
+    }
+
     // Remove profile + help from tree
     const navItems = navTree
       .filter((item) => item.id !== 'profile' && item.id !== 'help')
+      .filter(menuOk) // [count-culture] remove some menus
       .map((item) => enrichWithInteractionTracking(item, state.megaMenuDocked));
 
     if (config.featureToggles.pinNavItems) {
